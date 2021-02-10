@@ -1,6 +1,8 @@
 name: Build and deploy to Azure Spring Cloud
 
-on: [push]
+on:
+  push:
+    branches: xstof
 
 jobs:
   build-and-deploy:
@@ -12,7 +14,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Change directory
-      run: cd ./xstof/weather-service
+      run: cd xstof/weather-service
     - name: Build with Maven
       run: mvn package -DskipTests
     - name: Login to Azure Spring Cloud

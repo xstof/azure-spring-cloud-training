@@ -16,6 +16,7 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
+      working-directory: ./xstof/weather-service
       run: mvn package -DskipTests
     - name: Login to Azure Spring Cloud
       uses: azure/login@v1

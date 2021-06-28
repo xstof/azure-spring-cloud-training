@@ -1,0 +1,25 @@
+AZ_RESOURCE_GROUP=xstof-asc
+AZ_SPRING_CLOUD_NAME=xstof-asc
+
+# create spring cloud service
+az spring-cloud create \
+    -g "$AZ_RESOURCE_GROUP" \
+    -n "$AZ_SPRING_CLOUD_NAME" \
+    --enable-java-agent \
+    --sku standard
+
+# set defaults
+az configure --defaults group=$AZ_RESOURCE_GROUP
+az configure --defaults spring-cloud=$AZ_SPRING_CLOUD_NAME
+
+# create spring cloud app
+az spring-cloud app create -n simple-microservice
+
+# deploy spring cloud app
+az spring-cloud app deploy -n simple-microservice --jar-path target/demo-0.0.1-SNAPSHOT.jar
+
+# create spring cloud microservice app
+az spring-cloud app create -n spring-cloud-microservice
+
+# deploy spring cloud app
+az spring-cloud app deploy -n spring-cloud-microservice --jar-path target/demo-0.0.1-SNAPSHOT.jar

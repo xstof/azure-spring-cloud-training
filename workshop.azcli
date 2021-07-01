@@ -23,3 +23,30 @@ az spring-cloud app create -n spring-cloud-microservice
 
 # deploy spring cloud app
 az spring-cloud app deploy -n spring-cloud-microservice --jar-path target/demo-0.0.1-SNAPSHOT.jar
+
+# get logs
+az spring-cloud app logs --name spring-cloud-microservice -f
+
+# create city service
+az spring-cloud app create -n city-service
+
+# deploy city service
+az spring-cloud app deploy -n city-service --jar-path target/demo-0.0.1-SNAPSHOT.jar
+
+# create wheather service
+az spring-cloud app create -n weather-service
+
+# deploy wheather service
+az spring-cloud app deploy -n weather-service --jar-path target/demo-0.0.1-SNAPSHOT.jar
+
+# create spring cloud gateway service
+az spring-cloud app create -n gateway --is-public true
+
+# deploy spring cloud gateway
+az spring-cloud app deploy -n gateway --jar-path target/demo-0.0.1-SNAPSHOT.jar
+
+# create allcitiesweatherservice
+az spring-cloud app create -n all-cities-weather-service
+
+# deploy allcitiesweatherservice
+az spring-cloud app deploy -n all-cities-weather-service --jar-path target/demo-0.0.1-SNAPSHOT.jar
